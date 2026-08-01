@@ -3,55 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Complaint Management System</title>
-
+    <title>Campus Complaint Management System - GNIT</title>
+    <!-- Google Fonts for GNIT Styling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Poppins:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="container">
+    <!-- Header Navbar -->
+    <nav class="navbar">
+        <div class="brand-badge">
+            <div class="brand-icon">🎓</div>
+            <div class="brand-text">GNIT PORTAL</div>
+        </div>
+        <div class="nav-links">
+            <a href="/login" class="nav-link">User Login</a>
+            <a href="/register" class="nav-link">Register</a>
+            <a href="/track" class="nav-link">Track Status</a>
+            <a href="/admin" class="nav-link">Admin Access</a>
+        </div>
+    </nav>
 
-   
+    <!-- Main Content Wrapper -->
+    <div class="home-wrapper">
 
-    <h2 style="color:#003366;">Guru Nanak Institute of Technology (GNIT)</h2>
+        <!-- Hero Section -->
+        <div class="hero-card">
 
-    <h1 style="color:#007BFF;">Campus Complaint Management System</h1>
+            <!-- Official GNIT Header & Accreditation Banner -->
+            <div class="gnit-header-banner-container">
+                <img src="{{ url_for('static', filename='gnit_logo_banner.png') }}" alt="Guru Nanak Institute of Technology Official Accreditation Banner" class="gnit-header-banner-img">
+            </div>
 
-    <p>Welcome to GNIT Complaint Portal</p> 
-    <br>
+            <!-- GNIT College Building Image Banner -->
+            <div class="campus-banner-container">
+                <img src="{{ url_for('static', filename='gnit_campus.png') }}" alt="Guru Nanak Institute of Technology Campus" class="campus-banner-img">
+                <div class="campus-banner-overlay">
+                    <span class="campus-badge">🏛️ GNIT Campus Building</span>
+                </div>
+            </div>
 
-    <a href="/register">
-        <button>📝 Register</button>
-    </a>
+            <h1 class="gnit-blue-title" style="margin-top:10px;">Campus Complaint Management System</h1>
+            <p class="hero-subtitle">Welcome to the official GNIT Complaint Portal. Providing students and staff a transparent, efficient digital platform to voice concerns, submit grievances, and track resolution in real time.</p>
 
-    <br><br>
+            <!-- Actions Grid -->
+            <div class="actions-grid">
 
-    <a href="/login">
-        <button>🔐 Login</button>
-    </a>
+                <a href="/register" class="action-card">
+                    <div class="action-icon">📝</div>
+                    <div>
+                        <h3 class="action-title">User Registration</h3>
+                        <p class="action-desc">Create a new student or faculty account to access the complaint portal.</p>
+                    </div>
+                    <button class="action-btn">Register Account →</button>
+                </a>
 
-    <br><br>
+                <a href="/login" class="action-card">
+                    <div class="action-icon">🔐</div>
+                    <div>
+                        <h3 class="action-title">User Login</h3>
+                        <p class="action-desc">Sign in with your email & password to lodge complaints and view profile.</p>
+                    </div>
+                    <button class="action-btn">Login Now →</button>
+                </a>
 
-    <a href="/submit">
-        <button>📋 Submit Complaint</button>
-    </a>
-    <br><br>
-    <a href="/track">
-    <button>🔍 Track Complaint</button>
-    </a>
-    
-    <br><br>
+                <a href="/submit" class="action-card">
+                    <div class="action-icon">📋</div>
+                    <div>
+                        <h3 class="action-title">Submit Complaint</h3>
+                        <p class="action-desc">Lodge a new grievance directly to the concerned department instantly.</p>
+                    </div>
+                    <button class="action-btn">Submit Grievance →</button>
+                </a>
 
-    <a href="/admin">
-    <button>👨‍💼 Admin Login</button>
-    </a>
-    <br><br>
+                <a href="/track" class="action-card">
+                    <div class="action-icon">🔍</div>
+                    <div>
+                        <h3 class="action-title">Track Complaint</h3>
+                        <p class="action-desc">Enter your Complaint ID to check real-time status & resolution progress.</p>
+                    </div>
+                    <button class="action-btn">Track Status →</button>
+                </a>
 
-    <a href="/logout">
-        <button>🚪 Logout</button>
-    </a>
+                <a href="/admin" class="action-card admin-card">
+                    <div class="action-icon">👨‍💼</div>
+                    <div>
+                        <h3 class="action-title">Admin Portal</h3>
+                        <p class="action-desc">Authorized administrator login for complaint review & resolution.</p>
+                    </div>
+                    <button class="action-btn">Admin Access →</button>
+                </a>
 
-</div>
+                <a href="/logout" class="action-card logout-card">
+                    <div class="action-icon">🚪</div>
+                    <div>
+                        <h3 class="action-title">Session Logout</h3>
+                        <p class="action-desc">Safely terminate active login sessions on public or shared devices.</p>
+                    </div>
+                    <button class="action-btn">Logout Session</button>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Features Footer Bar -->
+        <div class="features-bar">
+            <div class="feature-item">
+                <span class="feature-icon">⚡</span>
+                <span>Real-Time Tracking</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🔒</span>
+                <span>Secure & Confidential</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🏛️</span>
+                <span>Direct Department Routing</span>
+            </div>
+        </div>
+
+        <div class="footer-text">
+            © 2026 Guru Nanak Institute of Technology (GNIT). Campus Complaint Management Portal.
+        </div>
+
+    </div>
 
 </body>
 </html>

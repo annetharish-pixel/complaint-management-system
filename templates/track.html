@@ -1,57 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track Complaint</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
-        body{
-            font-family:Arial;
-            background:#f2f2f2;
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
         }
 
-        .box{
-            width:500px;
-            margin:60px auto;
-            background:white;
-            padding:25px;
-            border-radius:10px;
-            box-shadow:0 0 10px gray;
-            text-align:center;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            font-size: 14px;
         }
 
-        input{
-            width:90%;
-            padding:10px;
-            margin:10px;
-        }
-
-        button{
-            padding:10px 20px;
-            background:#007BFF;
-            color:white;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-        }
-
-        table{
-            width:100%;
-            margin-top:20px;
-            border-collapse:collapse;
-        }
-
-        th,td{
-            border:1px solid black;
-            padding:10px;
+        th {
+            background: #007BFF;
+            color: white;
         }
     </style>
-
 </head>
 <body>
 
 <div class="box">
 
-<h2>Track Complaint</h2>
+    <img src="{{ url_for('static', filename='gnit_campus.png') }}" alt="GNIT Campus" style="width: 100%; height: 140px; object-fit: cover; border-radius: 14px; margin-bottom: 15px; border: 2px solid #e2e8f0;">
+
+    <h2 class="gnit-blue-title" style="margin-top:0;">Track Complaint</h2>
 
 <form method="POST">
 
@@ -102,6 +84,9 @@ required>
 <h3 style="color:red;">Complaint ID Not Found!</h3>
 
 {% endif %}
+
+    <br><br>
+    <a href="/"><button style="background:#6c757d; width:200px; padding:8px;">⬅ Home</button></a>
 
 </div>
 

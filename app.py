@@ -96,13 +96,46 @@ def login():
             session["user"] = user[0]
             return redirect("/submit")
 
-        return "<h2>Invalid Email or Password</h2>"
+        return render_template("login.html", error="Invalid Email or Password")
 
     return render_template("login.html")
+
+# ---------------- FORGOT PASSWORD ----------------
+
+@app.route("/forgot", methods=["GET", "POST"])
+def forgot():
+
+    if request.method == "POST":
+
+        email = request.form["email"]
+        new_password = request.form["new_password"]
+        confirm_password = request.form["confirm_password"]
+
+        if new_password != confirm_password:
+            return render_template("forgot.html", error="Passwords do not match!")
+
+        conn = sqlite3.connect("complaints.db")
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM users WHERE email=?", (email,))
+        user = cursor.fetchone()
+
+        if not user:
+            conn.close()
+            return render_template("forgot.html", error="Email address not found!")
+
+        cursor.execute("UPDATE users SET password=? WHERE email=?", (new_password, email))
+        conn.commit()
+        conn.close()
+
+        return render_template("login.html", message="Password reset successfully! Please login with your new password.")
+
+    return render_template("forgot.html")
 
 # ---------------- ADMIN LOGIN ----------------
 
 @app.route("/admin", methods=["GET", "POST"])
+@app.route("/admin_login", methods=["GET", "POST"])
 def admin():
 
     if request.method == "POST":
@@ -114,7 +147,7 @@ def admin():
             session["admin"] = True
             return redirect("/complaints")
 
-        return "<h2>Invalid Admin Username or Password</h2>"
+        return render_template("admin.html", error="Invalid Admin Username or Password")
 
     return render_template("admin.html")
 
@@ -134,7 +167,7 @@ def submit():
 
     if request.method == "POST":
 
-        complaint_id = "CMP" + str(uuid.uuid4().int)[:6]
+        complaint_id = "CMP" + uuid.uuid4().hex[:6].upper()
 
         name = request.form["name"]
         department = request.form["department"]
@@ -151,12 +184,7 @@ def submit():
         conn.commit()
         conn.close()
 
-        return f"""
-        <h2>Complaint Submitted Successfully!</h2>
-        <h3>Your Complaint ID: {complaint_id}</h3>
-        <br>
-        <a href='/'>Go Home</a>
-        """
+        return render_template("submit.html", success=True, complaint_id=complaint_id)
 
     return render_template("submit.html")
 
@@ -211,7 +239,7 @@ def resolve(id):
     conn.commit()
     conn.close()
 
-    return redirect("/dashboard")
+    return redirect("/complaints")
 
 # ---------------- TRACK COMPLAINT ----------------
 
