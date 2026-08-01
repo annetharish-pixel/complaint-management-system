@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Complaint</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Submit Complaint</h1>
+
+    <form method="POST">
+
+        <input type="text" name="name" placeholder="Enter Your Name" required><br><br>
+
+        <input type="text" name="department" placeholder="Department" required><br><br>
+
+        <textarea name="complaint" placeholder="Write your complaint" rows="5" required></textarea><br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

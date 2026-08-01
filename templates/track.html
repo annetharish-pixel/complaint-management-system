@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Complaint</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            background:#f2f2f2;
+        }
+
+        .box{
+            width:500px;
+            margin:60px auto;
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+            text-align:center;
+        }
+
+        input{
+            width:90%;
+            padding:10px;
+            margin:10px;
+        }
+
+        button{
+            padding:10px 20px;
+            background:#007BFF;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        table{
+            width:100%;
+            margin-top:20px;
+            border-collapse:collapse;
+        }
+
+        th,td{
+            border:1px solid black;
+            padding:10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="box">
+
+<h2>Track Complaint</h2>
+
+<form method="POST">
+
+<input type="text"
+name="complaint_id"
+placeholder="Enter Complaint ID (Example: CMP123456)"
+required>
+
+<br><br>
+
+<button type="submit">Track</button>
+
+</form>
+
+{% if result %}
+
+<table>
+
+<tr>
+<th>Complaint ID</th>
+<td>{{ result[1] }}</td>
+</tr>
+
+<tr>
+<th>Name</th>
+<td>{{ result[2] }}</td>
+</tr>
+
+<tr>
+<th>Department</th>
+<td>{{ result[3] }}</td>
+</tr>
+
+<tr>
+<th>Complaint</th>
+<td>{{ result[4] }}</td>
+</tr>
+
+<tr>
+<th>Status</th>
+<td>{{ result[5] }}</td>
+</tr>
+
+</table>
+
+{% elif request.method=="POST" %}
+
+<h3 style="color:red;">Complaint ID Not Found!</h3>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

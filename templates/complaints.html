@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Complaints</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            background:#f5f5f5;
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        table{
+            width:90%;
+            margin:auto;
+            border-collapse:collapse;
+            background:white;
+        }
+
+        th,td{
+            border:1px solid black;
+            padding:10px;
+            text-align:center;
+        }
+
+        th{
+            background:#007BFF;
+            color:white;
+        }
+
+        .pending{
+            color:red;
+            font-weight:bold;
+        }
+
+        .resolved{
+            color:green;
+            font-weight:bold;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        button{
+            padding:6px 12px;
+            background:green;
+            color:white;
+            border:none;
+            cursor:pointer;
+            border-radius:5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h2>GNIT - Complaint List</h2>
+<center>
+
+<form method="POST">
+
+<input type="text"
+name="search"
+placeholder="Search by Complaint ID, Name or Department"
+style="padding:8px; width:300px;">
+
+<button type="submit">Search</button>
+
+</form>
+
+</center>
+
+<br>
+
+<table>
+
+<tr>
+    <th>ID</th>
+    <th>Complaint ID</th>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Complaint</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for row in data %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[2] }}</td>
+<td>{{ row[3] }}</td>
+<td>{{ row[4] }}</td>
+
+<td>
+{% if row[5]=="Pending" %}
+<span class="pending">Pending</span>
+{% else %}
+<span class="resolved">Resolved</span>
+{% endif %}
+</td>
+
+<td>
+
+{% if row[5]=="Pending" %}
+<a href="/resolve/{{ row[0] }}">
+<button>Resolve</button>
+</a>
+{% else %}
+✅
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<center>
+<a href="/logout">
+<button>Logout</button>
+</a>
+</center>
+
+</body>
+</html>

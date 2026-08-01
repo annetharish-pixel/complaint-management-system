@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <style>
+        body{
+            font-family: Arial;
+            background:#f2f2f2;
+        }
+
+        .box{
+            width:350px;
+            margin:60px auto;
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+            text-align:center;
+        }
+
+        input{
+            width:90%;
+            padding:10px;
+            margin:10px;
+        }
+
+        button{
+            background:green;
+            color:white;
+            padding:10px 20px;
+            border:none;
+            cursor:pointer;
+        }
+
+        a{
+            text-decoration:none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>User Registration</h2>
+
+<form method="POST">
+
+<input type="text" name="name" placeholder="Enter Name" required>
+
+<input type="email" name="email" placeholder="Enter Email" required>
+
+<input type="password" name="password" placeholder="Enter Password" required>
+
+<input type="text" name="department" placeholder="Department" required>
+
+<button type="submit">Register</button>
+
+</form>
+
+<br>
+
+Already have an account?
+
+<a href="/login">Login Here</a>
+
+</div>
+
+</body>
+</html>
